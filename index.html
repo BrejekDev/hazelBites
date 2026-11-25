@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hazel Bites - Kelezatan Renyah Khas Nusantara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-logo">LOGO</span>
+      </a>
+
+      <div class="nav-search">
+        <input type="text" placeholder="Cari..." aria-label="Cari produk">
+        <button class="search-btn" aria-label="Cari">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Beranda</a></li>
+          <li><a href="#katalog" class="nav-link">Produk</a></li>
+          <li><a href="#tentang" class="nav-link">Tentang Kami</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-btn" aria-label="Keranjang Belanja">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </button>
+
+        <a href="login.html" class="login-btn">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero-section">
+    <div class="container hero-wrapper">
+      <div class="hero-content">
+        <h1 class="hero-title">Kelezatan Renyah<br>Khas Nusantara</h1>
+        <p class="hero-subtitle">Kue kering buatan rumah dari bahan<br>premium tanpa pengawet</p>
+        <a href="#katalog" class="hero-cta">Beli Sekarang</a>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="assets/images/hero-cookies.png" alt="Hazel Bites Kelezatan Renyah Khas Nusantara" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KENAPA HARUS MEMILIH KAMI ==================== -->
+  <section class="why-us-section" id="tentang">
+    <div class="container">
+      <h2 class="section-title">KENAPA HARUS MEMILIH KAMI</h2>
+      <div class="why-us-cards">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <div class="why-text">
+            <h3>Bahan Berkualitas</h3>
+            <p>100% bahan premium pilihan kualitas terbaik tanpa bahan kimia pengawet.</p>
+          </div>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <div class="why-text">
+            <h3>100% Homemade</h3>
+            <p>Dipanggang dengan resep khas rumahan penuh cinta dan rasa otentik.</p>
+          </div>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div class="why-text">
+            <h3>Pengiriman Seluruh Indonesia</h3>
+            <p>Kemasan khusus aman dan tahan goncangan sampai ke depan pintu rumah Anda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRODUK UNGGULAN ==================== -->
+  <section class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Produk Unggulan</h2>
+      <div class="product-grid">
+        <!-- Card 1 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/featured_prod_1.png" alt="Produk Unggulan 1">
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/featured_prod_2.png" alt="Produk Unggulan 2">
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/featured_prod_3.png" alt="Produk Unggulan 3">
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/featured_prod_4.png" alt="Produk Unggulan 4">
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KATALOG PRODUK ==================== -->
+  <section class="catalog-section" id="katalog">
+    <div class="container">
+      <h2 class="section-title">KATALOG PRODUK</h2>
+      <div class="product-grid">
+        <!-- Catalog 1 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/catalog_prod_1.png" alt="Katalog 1">
+            <span class="card-badge">READY STOCK</span>
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalog 2 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/catalog_prod_2.png" alt="Katalog 2">
+            <span class="card-badge">READY STOCK</span>
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalog 3 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/catalog_prod_3.png" alt="Katalog 3">
+            <span class="card-badge">READY STOCK</span>
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalog 4 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/catalog_prod_4.png" alt="Katalog 4">
+            <span class="card-badge">READY STOCK</span>
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalog 5 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/catalog_prod_5.png" alt="Katalog 5">
+            <span class="card-badge">READY STOCK</span>
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalog 6 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/catalog_prod_6.png" alt="Katalog 6">
+            <span class="card-badge">READY STOCK</span>
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalog 7 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/catalog_prod_7.png" alt="Katalog 7">
+            <span class="card-badge">READY STOCK</span>
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catalog 8 -->
+        <div class="product-card">
+          <div class="card-image-wrap">
+            <img src="assets/images/catalog_prod_8.png" alt="Katalog 8">
+            <span class="card-badge">READY STOCK</span>
+          </div>
+          <div class="card-body">
+            <h3 class="product-name">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet</h3>
+            <div class="card-footer">
+              <span class="product-price">Rp 125.000</span>
+              <span class="product-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-actions">
+        <a href="#katalog" class="btn-see-more">
+          Lihat Selengkapnya
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2 class="footer-title">Hazel Bites</h2>
+          <p class="footer-desc">Kue kering buatan rumah dari bahan premium tanpa pengawet</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Layanan Pelanggan</h4>
+          <ul>
+            <li><a href="#">Cara Pemesanan</a></li>
+            <li><a href="#">Konfirmasi Pembayaran</a></li>
+            <li><a href="#">Cek Status Pesanan</a></li>
+            <li><a href="#">Syarat Retur & Garansi</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Informasi</h4>
+          <ul>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#">Syarat & Ketentuan</a></li>
+            <li><a href="#">FAQ/Bantuan</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#">Web</a></li>
+            <li><a href="#">Mobile</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Hazel Bites All Rights Reversed. Created by Darrel Syadid Yasma & Anya Anindya Mandiri Jamil (X RPL A)</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

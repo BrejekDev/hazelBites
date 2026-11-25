@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hazel Bites – Kue Kering Homemade</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="#" class="navbar-logo">
+        <div class="logo-mark">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Cookie icon placeholder -->
+            <circle cx="10" cy="10" r="9" fill="white" opacity="0.9"/>
+            <circle cx="7" cy="8" r="1.5" fill="#C95160"/>
+            <circle cx="13" cy="7" r="1" fill="#C95160"/>
+            <circle cx="11" cy="13" r="1.5" fill="#C95160"/>
+            <circle cx="6" cy="13" r="1" fill="#C95160"/>
+          </svg>
+        </div>
+        <span class="logo-text">Hazel Bites</span>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="navbar-search">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" placeholder="Cari..." />
+      </div>
+
+      <!-- Nav Links -->
+      <nav class="navbar-nav">
+        <a href="#" class="nav-link active">Beranda</a>
+        <a href="#produk" class="nav-link">Produk</a>
+        <a href="#tentang" class="nav-link">Tentang</a>
+        <a href="#tentang" class="nav-link">Tentang Kami</a>
+      </nav>
+
+      <!-- Cart + Avatar -->
+      <div class="navbar-actions">
+        <a href="#" class="cart-btn" aria-label="Keranjang">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E6DCCB" stroke-width="2">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </a>
+        <div class="avatar-circle">
+          <img src="assets/user-avatar.png" alt="User" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <div class="hero-bg-image">
+      <img src="assets/hero-bg.png" alt="Background" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Vertical divider line -->
+    <div class="hero-divider"></div>
+
+    <!-- Left Side – Image -->
+    <div class="hero-left">
+      <img src="assets/hero-product.png" alt="Produk Hazel Bites" class="hero-product-img" />
+    </div>
+
+    <!-- Right Side – Text -->
+    <div class="hero-right">
+      <p class="hero-tagline">Kue Kering Homemade</p>
+      <h1 class="hero-title">Kelezatan Sederhana<br>dalam Setiap Gigitan</h1>
+      <p class="hero-subtitle">Nikmati kue kering homemade dengan bahan<br>pilihan dan rasa yang selalu istimewa.</p>
+
+      <!-- CTA Button -->
+      <a href="#produk" class="hero-cta">
+        Jelajahi Sekarang
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+      <!-- Mini Badges -->
+      <div class="hero-badges">
+        <div class="badge-item">
+          <div class="badge-avatars">
+            <img src="assets/user-avatar.png" alt="user" class="badge-avatar" />
+            <img src="assets/user-avatar.png" alt="user" class="badge-avatar" />
+            <img src="assets/user-avatar.png" alt="user" class="badge-avatar" />
+          </div>
+          <div class="badge-text">
+            <strong>Bahan Berkualitas</strong>
+          </div>
+        </div>
+        <div class="hero-sep"></div>
+        <div class="badge-item">
+          <div class="badge-text"><strong>100%<br>Homemade</strong></div>
+        </div>
+        <div class="hero-sep"></div>
+        <div class="badge-item">
+          <div class="badge-text"><strong>Pengiriman<br>Seluruh Indonesia</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promo pill top-right -->
+    <div class="hero-promo-pill">
+      <span>🍪 Free Ongkir Min. Order Rp 150.000</span>
+    </div>
+  </section>
+
+  <!-- ===== MID BANNER ===== -->
+  <section class="mid-banner">
+    <img src="assets/banner-mid.png" alt="Banner Promo" />
+    <div class="mid-banner-overlay">
+      <h2>Kelezatan Renyah<br>Khas Nusantara</h2>
+      <p>Kue kering buatan rumah dari bahan<br>premium tanpa pengawet</p>
+      <a href="#produk" class="btn-pesan">Pesan Sekarang!</a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT US ===== -->
+  <section class="about-section" id="tentang">
+    <div class="about-bg-image">
+      <img src="assets/about-bg.png" alt="About Background" />
+      <div class="about-overlay"></div>
+    </div>
+    <div class="about-content">
+      <h3 class="about-label">Tentang Kami</h3>
+      <h2 class="about-title">Kelezatan Renyah di Setiap Gigitan</h2>
+      <p class="about-desc">Berawal dari kecintaan kami pada kue panggang rumahan,<br>kami menyajikan kue kering dengan tekstur renyah di luar dan lembut di dalam.</p>
+      <p class="about-sub">Kelezatan Renyah di Setiap Gigitan</p>
+    </div>
+  </section>
+
+  <!-- ===== PRODUK UNGGULAN ===== -->
+  <section class="products-section" id="produk">
+    <div class="products-header">
+      <h2>Produk Unggulan</h2>
+    </div>
+
+    <div class="products-row">
+
+      <!-- Card 1: Kue Kacang -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="assets/prod-kue-kacang.png" alt="Kue Kacang" />
+        </div>
+        <div class="product-info">
+          <p class="product-name">Kue Kacang Cokelat</p>
+          <p class="product-price">Rp 125.000</p>
+          <div class="product-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge pre-order">PRE ORDER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Lidah Kucing -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="assets/prod-lidah-kucing.png" alt="Lidah Kucing Keju" />
+        </div>
+        <div class="product-info">
+          <p class="product-name">Lidah Kucing Keju</p>
+          <p class="product-price">Rp 125.000</p>
+          <div class="product-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge pre-order">PRE ORDER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Kue Yaya -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Kue Yaya" />
+        </div>
+        <div class="product-info">
+          <p class="product-name">Kue Yaya</p>
+          <p class="product-price">Rp 125.000</p>
+          <div class="product-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Pia Bulan / Kurma Kacang -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Pia Bulan" />
+        </div>
+        <div class="product-info">
+          <p class="product-name">Pia Bulan</p>
+          <p class="product-price">Rp 125.000</p>
+          <div class="product-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Row 2 -->
+    <div class="products-row" style="margin-top: 24px;">
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="assets/prod-cookies.png" alt="Cookies Cokelat" />
+        </div>
+        <div class="product-info">
+          <p class="product-name">Cookies Cokelat</p>
+          <p class="product-price">Rp 125.000</p>
+          <div class="product-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="assets/prod-fifty-fifty.png" alt="Kue Fifty Fifty" />
+        </div>
+        <div class="product-info">
+          <p class="product-name">Kue Fifty Fifty</p>
+          <p class="product-price">Rp 125.000</p>
+          <div class="product-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Kastangel Keju" />
+        </div>
+        <div class="product-info">
+          <p class="product-name">Kastangel Keju</p>
+          <p class="product-price">Rp 125.000</p>
+          <div class="product-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Nastar Keju" />
+        </div>
+        <div class="product-info">
+          <p class="product-name">Nastar Keju</p>
+          <p class="product-price">Rp 125.000</p>
+          <div class="product-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="see-more-wrap">
+      <a href="#" class="see-more-link">
+        Lihat Selengkapnya
+        <span class="see-more-line"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== KATALOG PRODUK ===== -->
+  <section class="catalog-section">
+    <div class="catalog-header">
+      <h2>KATALOG PRODUK</h2>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="catalog-row">
+      <div class="catalog-card">
+        <div class="catalog-img-wrap">
+          <img src="assets/prod-kue-kacang.png" alt="Kue Kacang" />
+        </div>
+        <div class="catalog-info">
+          <p class="catalog-name">Kue Kacang Love</p>
+          <p class="catalog-price">Rp 125.000</p>
+          <div class="catalog-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card">
+        <div class="catalog-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Kastangel Keju" />
+        </div>
+        <div class="catalog-info">
+          <p class="catalog-name">Kastangel Keju</p>
+          <p class="catalog-price">Rp 125.000</p>
+          <div class="catalog-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card">
+        <div class="catalog-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Kue Yaya" />
+        </div>
+        <div class="catalog-info">
+          <p class="catalog-name">Kue Yaya</p>
+          <p class="catalog-price">Rp 125.000</p>
+          <div class="catalog-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card">
+        <div class="catalog-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Pia Bulan" />
+        </div>
+        <div class="catalog-info">
+          <p class="catalog-name">Pia Bulan</p>
+          <p class="catalog-price">Rp 125.000</p>
+          <div class="catalog-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="catalog-row">
+      <div class="catalog-card">
+        <div class="catalog-img-wrap">
+          <img src="assets/prod-cookies.png" alt="Cookies Cokelat" />
+        </div>
+        <div class="catalog-info">
+          <p class="catalog-name">Cookies Cokelat</p>
+          <p class="catalog-price">Rp 125.000</p>
+          <div class="catalog-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card">
+        <div class="catalog-img-wrap">
+          <img src="assets/prod-fifty-fifty.png" alt="Kue Fifty Fifty" />
+        </div>
+        <div class="catalog-info">
+          <p class="catalog-name">Kue Fifty Fifty</p>
+          <p class="catalog-price">Rp 125.000</p>
+          <div class="catalog-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card">
+        <div class="catalog-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Kue Kacang Cokelat" />
+        </div>
+        <div class="catalog-info">
+          <p class="catalog-name">Kue Kacang Cokelat</p>
+          <p class="catalog-price">Rp 125.000</p>
+          <div class="catalog-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge pre-order">PRE ORDER</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card">
+        <div class="catalog-img-wrap">
+          <img src="assets/prod-pia-bulan.png" alt="Nastar Keju" />
+        </div>
+        <div class="catalog-info">
+          <p class="catalog-name">Nastar Keju</p>
+          <p class="catalog-price">Rp 125.000</p>
+          <div class="catalog-footer">
+            <span class="product-stars">★★★★★</span>
+            <span class="product-badge ready">READY STOCK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="see-more-wrap">
+      <a href="#" class="see-more-link">
+        Lihat Selengkapnya
+        <span class="see-more-line"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section class="why-us">
+    <h2>KENAPA HARUS MEMILIH KAMI</h2>
+    <div class="why-banner">
+      <img src="assets/why-us-banner.png" alt="Why Us" />
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="kontak">
+    <div class="footer-inner">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <h2 class="footer-logo">Hazel Bites</h2>
+        <p class="footer-tagline">Kue kering buatan rumah dari bahan<br>premium tanpa pengawet</p>
+        <div class="footer-contact">
+          <p>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E6DCCB" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.9 5.9l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Hubungi Kami +62 812-3456-7890
+          </p>
+          <p>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E6DCCB" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email Kami : hazelbites@gmail.com
+          </p>
+        </div>
+        <!-- Social Media icons placeholder -->
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E6DCCB" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="WhatsApp">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E6DCCB" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Layanan Pelanggan</h4>
+          <ul>
+            <li><a href="#">Cara Pemesanan</a></li>
+            <li><a href="#">Konfirmasi Pembayaran</a></li>
+            <li><a href="#">Cek Status Pesanan</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Informasi</h4>
+          <ul>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#">Syarat &amp; Ketentuan</a></li>
+            <li><a href="#">FAQ/Bantuan</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#">Web</a></li>
+            <li><a href="#">Mobile</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <hr class="footer-hr" />
+      <div class="footer-bottom-row">
+        <p>© 2026 Hazel Bites All Rights Reserved. Created by Darrel Syadid Yasma &amp; Anya Anindya Mandiri Jamil (X RPL A)</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
