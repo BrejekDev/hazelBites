@@ -1,25 +1,11 @@
-/* ==========================================================
-   0. PENJAGA ROUTING HALAMAN (GUEST VS USER)
-   ========================================================== */
 function apakahUserLogin() {
   if (ambilParameterURL("login") === "1") {
     localStorage.setItem("hb_login", "1");
     sessionStorage.setItem("hb_login", "1");
-    document.cookie = "hb_login=1; path=/";
-    if (window.history && window.history.replaceState) {
-      const bersih = window.location.pathname + window.location.hash;
-      window.history.replaceState(null, "", bersih);
-    }
     return true;
   }
 
   if (localStorage.getItem("hb_login") === "1" || sessionStorage.getItem("hb_login") === "1") {
-    return true;
-  }
-
-  if (document.cookie.indexOf("hb_login=1") !== -1) {
-    localStorage.setItem("hb_login", "1");
-    sessionStorage.setItem("hb_login", "1");
     return true;
   }
 
@@ -28,7 +14,6 @@ function apakahUserLogin() {
     if (sesi && sesi.hb_login === "1") {
       sessionStorage.setItem("hb_login", "1");
       localStorage.setItem("hb_login", "1");
-      document.cookie = "hb_login=1; path=/";
       if (sesi.hb_user) {
         localStorage.setItem("hb_user", JSON.stringify(sesi.hb_user));
       }
@@ -71,23 +56,6 @@ function jalankanRoutingHalaman() {
 
 jalankanRoutingHalaman();
 
-/* ==========================================================
-   Hazel Bites - ui.js
-   Fitur tampilan yang dipakai hampir semua halaman:
-   - menu mobile
-   - dropdown profil
-   - tombol keranjang
-   - tombol kembali
-   - pencarian produk
-   - sorot menu sesuai posisi scroll
-
-   Materi: variabel, tipe data, object, array, control flow,
-   HTML DOM (querySelector, addEventListener, classList, dll).
-   ========================================================== */
-
-/* ==========================================================
-   1. MENU MOBILE
-   ========================================================== */
 const tombolMenu = ambilElemen("[data-nav-toggle]");
 const menuNav = ambilElemen("[data-nav]");
 
@@ -102,7 +70,7 @@ if (tombolMenu !== null && menuNav !== null) {
     }
   });
 
-  const tautanMenu = menuNav.querySelectorAll("a");
+  const tautanMenu = menuNav.getElementsByTagName("a");
   for (let i = 0; i < tautanMenu.length; i++) {
     tautanMenu[i].addEventListener("click", function () {
       menuNav.classList.remove("open");
@@ -111,9 +79,6 @@ if (tombolMenu !== null && menuNav !== null) {
   }
 }
 
-/* ==========================================================
-   2. DROPDOWN PROFIL
-   ========================================================== */
 const avatarNavbar = ambilElemen("[data-avatar]");
 const dropdownProfil = ambilElemen("[data-dropdown]");
 
@@ -143,8 +108,8 @@ if (avatarNavbar !== null && dropdownProfil !== null) {
   });
 
   const tautanDropdown = dropdownProfil.querySelectorAll("a");
-  for (let j = 0; j < tautanDropdown.length; j++) {
-    tautanDropdown[j].addEventListener("click", function (event) {
+  tautanDropdown.forEach(function (tautan) {
+    tautan.addEventListener("click", function (event) {
       event.stopPropagation();
 
       let href = this.getAttribute("href");
@@ -161,7 +126,7 @@ if (avatarNavbar !== null && dropdownProfil !== null) {
         }
       }
     });
-  }
+  });
 
   document.addEventListener("click", tutupDropdownProfil);
   document.addEventListener("keydown", function (event) {
@@ -171,9 +136,6 @@ if (avatarNavbar !== null && dropdownProfil !== null) {
   });
 }
 
-/* ==========================================================
-   3. TOMBOL KERANJANG DI HEADER
-   ========================================================== */
 const tombolKeranjang = ambilElemen("[data-cart]");
 
 if (tombolKeranjang !== null && tombolKeranjang.tagName === "BUTTON") {
@@ -182,9 +144,6 @@ if (tombolKeranjang !== null && tombolKeranjang.tagName === "BUTTON") {
   });
 }
 
-/* ==========================================================
-   4. TOMBOL KEMBALI
-   ========================================================== */
 const tombolKembali = ambilElemen("[data-back]");
 
 if (tombolKembali !== null) {
@@ -212,10 +171,7 @@ if (tombolKembali !== null) {
   });
 }
 
-/* ==========================================================
-   5. PENCARIAN PRODUK
-   ========================================================== */
-const inputCari = document.getElementById("search");
+const inputCari = ambilElemenId("search");
 const formCari = ambilElemen("[data-search-form]");
 const hasilKosong = ambilElemen("[data-no-result]");
 
@@ -226,19 +182,19 @@ if (inputCari !== null && formCari !== null) {
     let kataKunci = inputCari.value.trim().toLowerCase();
     let jumlahTerlihat = 0;
 
-    for (let i = 0; i < kartuProduk.length; i++) {
-      let namaProduk = kartuProduk[i].getAttribute("data-name");
+    kartuProduk.forEach(function (kartu) {
+      let namaProduk = kartu.getAttribute("data-name");
       if (namaProduk === null) {
         namaProduk = "";
       }
 
       if (kataKunci === "" || namaProduk.indexOf(kataKunci) !== -1) {
-        kartuProduk[i].hidden = false;
-        jumlahTerlihat = jumlahTerlihat + 1;
+        kartu.hidden = false;
+        jumlahTerlihat += 1;
       } else {
-        kartuProduk[i].hidden = true;
+        kartu.hidden = true;
       }
-    }
+    });
 
     if (hasilKosong !== null) {
       if (kataKunci === "" || jumlahTerlihat > 0) {
@@ -278,16 +234,13 @@ if (inputCari !== null && formCari !== null) {
 
     saringProduk();
 
-    const katalog = document.getElementById("katalog");
+    const katalog = ambilElemenId("katalog");
     if (katalog !== null && kataKunci !== "") {
       katalog.scrollIntoView({ behavior: "smooth" });
     }
   });
 }
 
-/* ==========================================================
-   6. SOROT MENU SESUAI POSISI SCROLL
-   ========================================================== */
 const tautanNavigasi = ambilSemuaElemen(".nav a[href^='#']");
 
 function sorotMenu() {
@@ -295,8 +248,8 @@ function sorotMenu() {
   let hrefAktif = "";
   let offsetTerbesar = -1;
 
-  for (let i = 0; i < tautanNavigasi.length; i++) {
-    let href = tautanNavigasi[i].getAttribute("href");
+  for (let tautan of tautanNavigasi) {
+    let href = tautan.getAttribute("href");
     const bagian = document.querySelector(href);
 
     if (bagian !== null && bagian.offsetTop <= posisi && bagian.offsetTop > offsetTerbesar) {
@@ -305,14 +258,14 @@ function sorotMenu() {
     }
   }
 
-  for (let j = 0; j < tautanNavigasi.length; j++) {
-    const hrefMenu = tautanNavigasi[j].getAttribute("href");
+  tautanNavigasi.forEach(function (tautan) {
+    const hrefMenu = tautan.getAttribute("href");
     if (hrefMenu === hrefAktif) {
-      tautanNavigasi[j].style.color = "var(--rose)";
+      tautan.style.color = "var(--rose)";
     } else {
-      tautanNavigasi[j].style.color = "";
+      tautan.style.color = "";
     }
-  }
+  });
 }
 
 if (tautanNavigasi.length > 0) {
@@ -320,13 +273,10 @@ if (tautanNavigasi.length > 0) {
   sorotMenu();
 }
 
-/* ==========================================================
-   7. TAUTAN FOOTER YANG BELUM PUNYA HALAMAN KHUSUS
-   ========================================================== */
 const tautanFooter = ambilSemuaElemen('.footer a[href="#"]');
 
-for (let f = 0; f < tautanFooter.length; f++) {
-  tautanFooter[f].addEventListener("click", function (event) {
+tautanFooter.forEach(function (tautan) {
+  tautan.addEventListener("click", function (event) {
     event.preventDefault();
 
     const isGuest = document.body.classList.contains("is-guest");
@@ -363,4 +313,4 @@ for (let f = 0; f < tautanFooter.length; f++) {
       tampilkanToast("Halaman " + this.textContent.trim() + " Hazel Bites");
     }
   });
-}
+});

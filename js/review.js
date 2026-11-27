@@ -1,18 +1,5 @@
-/* ==========================================================
-   Hazel Bites - review.js
-   Fitur halaman ulasan.html:
-   - menampilkan produk yang diulas (dari URL ?p=)
-   - pilih rating bintang
-   - unggah foto ulasan
-   - kirim ulasan
-
-   Materi: variabel, tipe data, object, array of object,
-   control flow, HTML DOM.
-   ========================================================== */
-
 const halamanUlasan = ambilElemen("[data-review-page]");
 
-/* ---------- Memasang aksi bintang pada satu grup rating ---------- */
 function pasangRatingBintang(grup) {
   const semuaBintang = grup.querySelectorAll("[data-star-val]");
 
@@ -46,7 +33,6 @@ function pasangRatingBintang(grup) {
 
 if (halamanUlasan !== null) {
 
-  /* ---------- 1. Info produk yang diulas ---------- */
   const slugUlasan = ambilParameterURL("p");
   const qtyUlasan = ambilParameterURL("qty");
   const ukuranUlasan = ambilParameterURL("size");
@@ -90,14 +76,12 @@ if (halamanUlasan !== null) {
     }
   }
 
-  /* ---------- 2. Rating bintang ---------- */
   const semuaGrupRating = ambilSemuaElemen("[data-rating-group]");
 
   for (let j = 0; j < semuaGrupRating.length; j++) {
     pasangRatingBintang(semuaGrupRating[j]);
   }
 
-  /* ---------- 3. Unggah foto ulasan ---------- */
   const inputFotoUlasan = ambilSemuaElemen("[data-review-photo]");
 
   for (let k = 0; k < inputFotoUlasan.length; k++) {
@@ -132,7 +116,6 @@ if (halamanUlasan !== null) {
     });
   }
 
-  /* ---------- 4. Kirim ulasan ---------- */
   const formUlasan = ambilElemen("[data-review-form]");
 
   if (formUlasan !== null) {

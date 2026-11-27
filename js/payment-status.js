@@ -1,12 +1,3 @@
-/* ==========================================================
-   Hazel Bites - payment-status.js
-   Fitur halaman pembayaran-berhasil.html & pembayaran-gagal.html:
-   menampilkan nomor pesanan, metode, tanggal, dan total dari
-   struk terakhir (localStorage: hb_last_receipt).
-
-   Materi: variabel, tipe data, object, control flow, HTML DOM.
-   ========================================================== */
-
 if (ambilElemen("[data-pay-status-page]") !== null) {
   const strukTerakhir = JSON.parse(localStorage.getItem("hb_last_receipt") || "null");
 

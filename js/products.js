@@ -1,11 +1,3 @@
-/* ==========================================================
-   Hazel Bites - products.js
-   Data produk untuk halaman detail & ulasan.
-
-   Materi: variabel, tipe data, object, array, array of object.
-   Setiap produk adalah satu object di dalam array daftarProduk.
-   ========================================================== */
-
 const ALERGEN_PRODUK = "Alergen: Mengandung gluten (terigu), telur, susu, dan produk olahan turunannya.";
 const SARAN_SIMPAN = "Saran Penyimpanan: Simpan di tempat yang sejuk, kering, dan tertutup rapat agar kerenyahan kue tetap terjaga.";
 const BAHAN_DASAR = "Tepung terigu, mentega (butter), margarin, gula halus, kuning telur, susu bubuk, ";

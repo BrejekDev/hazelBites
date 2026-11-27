@@ -1,25 +1,9 @@
-/* ==========================================================
-   Hazel Bites - core.js
-   Kumpulan variabel dan fungsi yang dipakai semua halaman.
-
-   Materi yang dipakai:
-   - Variabel      : const / let
-   - Tipe data     : number, string, boolean, object, array
-   - Object        : HARGA_UKURAN, KERANJANG_AWAL
-   - Array         : daftar item keranjang, daftar default
-   - Array of Object: KERANJANG_AWAL
-   - Control flow  : if, for
-   - HTML DOM      : querySelector, querySelectorAll, textContent, classList
-   ========================================================== */
-
-/* ---------- Object: harga berdasarkan ukuran ---------- */
 const HARGA_UKURAN = {
   "350 Gram": 125000,
   "500 Gram": 175000,
   "750 Gram": 225000
 };
 
-/* ---------- Array of Object: isi keranjang contoh ---------- */
 const KERANJANG_AWAL = [
   { slug: "kue-nastar-original", name: "Kue Kacang", size: "350 Gram", qty: 1, price: 125000, checked: true },
   { slug: "cookies-cokelat", name: "Cookies Cokelat", size: "350 Gram", qty: 1, price: 125000, checked: true },
@@ -27,7 +11,18 @@ const KERANJANG_AWAL = [
   { slug: "kurma-kacang", name: "Kurma Kacang", size: "750 Gram", qty: 1, price: 225000, checked: true }
 ];
 
-/* ---------- Fungsi bantu DOM ---------- */
+function ambilElemenId(id) {
+  return document.getElementById(id);
+}
+
+function ambilElemenClass(namaClass) {
+  return document.getElementsByClassName(namaClass);
+}
+
+function ambilElemenTag(namaTag) {
+  return document.getElementsByTagName(namaTag);
+}
+
 function ambilElemen(selector) {
   return document.querySelector(selector);
 }
@@ -36,7 +31,6 @@ function ambilSemuaElemen(selector) {
   return document.querySelectorAll(selector);
 }
 
-/* ---------- Format angka menjadi rupiah ---------- */
 function formatRupiah(angka) {
   let nilai = Number(angka);
 
@@ -51,7 +45,6 @@ function formatRupiah(angka) {
   return "Rp " + nilai.toLocaleString("id-ID");
 }
 
-/* ---------- Mengubah teks agar aman dimasukkan ke HTML ---------- */
 function escapeHtml(teks) {
   let hasil = "" + teks;
   hasil = hasil.split("&").join("&amp;");
@@ -62,7 +55,6 @@ function escapeHtml(teks) {
   return hasil;
 }
 
-/* ---------- Toast (notifikasi kecil di bawah) ---------- */
 let timerToast = null;
 
 function tampilkanToast(pesan) {
@@ -83,7 +75,6 @@ function tampilkanToast(pesan) {
   }, 2200);
 }
 
-/* ---------- Keranjang disimpan di localStorage ---------- */
 function ambilKeranjang() {
   let data = localStorage.getItem("hb_cart");
   if (data === null) {
@@ -103,8 +94,9 @@ function hitungJumlahKeranjang() {
   }
 
   let jumlah = 0;
-  for (let i = 0; i < keranjang.length; i++) {
-    jumlah = jumlah + keranjang[i].qty;
+
+  for (let item of keranjang) {
+    jumlah += item.qty;
   }
   return jumlah;
 }
@@ -129,18 +121,18 @@ function perbaruiJumlahKeranjang() {
   }
 }
 
-/* ---------- Menyalin object (pengganti Object.assign) ---------- */
 function salinObject(objectAsal) {
-  let hasil = {};
-  for (let kunci in objectAsal) {
-    if (objectAsal.hasOwnProperty(kunci)) {
-      hasil[kunci] = objectAsal[kunci];
-    }
-  }
+  let hasil = {
+    slug: objectAsal.slug,
+    name: objectAsal.name,
+    size: objectAsal.size,
+    qty: objectAsal.qty,
+    price: objectAsal.price,
+    checked: objectAsal.checked
+  };
   return hasil;
 }
 
-/* ---------- Data user ---------- */
 function ambilDataUser() {
   let data = localStorage.getItem("hb_user");
   if (data === null) {
@@ -159,18 +151,17 @@ function sinkronkanAvatarNavbar() {
     return;
   }
 
-  const gambar = avatar.querySelector("img");
-  if (gambar === null) {
+  const daftarGambar = avatar.getElementsByTagName("img");
+  if (daftarGambar.length === 0) {
     return;
   }
 
   const user = ambilDataUser();
   if (user !== null && user.avatar) {
-    gambar.src = user.avatar;
+    daftarGambar[0].src = user.avatar;
   }
 }
 
-/* ---------- Mengambil parameter dari URL (?p=...&qty=...) ---------- */
 function ambilParameterURL(nama) {
   let query = window.location.search;
   if (query.length < 2) {
@@ -180,21 +171,21 @@ function ambilParameterURL(nama) {
   query = query.substring(1);
   const daftar = query.split("&");
 
-  for (let i = 0; i < daftar.length; i++) {
-    const pasangan = daftar[i].split("=");
+  let hasilNilai = "";
+  daftar.forEach(function (item) {
+    const pasangan = item.split("=");
     if (pasangan[0] === nama) {
       let nilai = pasangan[1];
       if (typeof nilai === "undefined") {
         nilai = "";
       }
-      return decodeURIComponent(nilai);
+      hasilNilai = decodeURIComponent(nilai);
     }
-  }
+  });
 
-  return "";
+  return hasilNilai;
 }
 
-/* ---------- Mengubah "350 Gram" menjadi "350g" ---------- */
 function ubahKeGram(ukuran) {
   if (!ukuran) {
     return "300g";
@@ -211,6 +202,5 @@ function ubahKeGram(ukuran) {
   return hasil;
 }
 
-/* ---------- Dijalankan saat file dimuat ---------- */
 perbaruiJumlahKeranjang();
 sinkronkanAvatarNavbar();

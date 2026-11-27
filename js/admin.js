@@ -1,29 +1,9 @@
-/* ==========================================================
-   Hazel Bites - admin.js
-   Logika admin panel (admin.html):
-   1. proteksi rute & topbar
-   2. navigasi tab
-   3. manajemen produk
-   4. kelola pesanan
-   5. kelola pengguna
-   6. laporan penjualan
-   7. utilitas pagination & modal
-
-   Materi: variabel, tipe data, object, array of object,
-   control flow, HTML DOM.
-   ========================================================== */
-
-/* ================= PROTEKSI RUTE & TOPBAR ================= */
 let adminAktif = false;
 if (window.location.search.indexOf("admin=1") !== -1) {
   localStorage.setItem("hb_admin_session", "1");
   sessionStorage.setItem("hb_admin_session", "1");
-  document.cookie = "hb_admin_session=1; path=/";
   adminAktif = true;
 } else if (localStorage.getItem("hb_admin_session") === "1" || sessionStorage.getItem("hb_admin_session") === "1") {
-  adminAktif = true;
-} else if (document.cookie.indexOf("hb_admin_session=1") !== -1) {
-  localStorage.setItem("hb_admin_session", "1");
   adminAktif = true;
 } else if (window.name && window.name.indexOf('"hb_admin_session":"1"') !== -1) {
   localStorage.setItem("hb_admin_session", "1");
@@ -43,7 +23,6 @@ function logoutAdmin() {
   localStorage.removeItem("hb_admin_session");
   localStorage.removeItem("hb_admin_email");
   sessionStorage.removeItem("hb_admin_session");
-  document.cookie = "hb_admin_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
   window.name = "";
   window.location.href = "login.html";
 }
@@ -83,7 +62,6 @@ window.addEventListener("click", function (event) {
   }
 });
 
-/* ================= NAVIGASI TAB ================= */
 function switchTab(tab) {
   const semuaNav = document.querySelectorAll(".nav-item");
 
@@ -113,7 +91,6 @@ function formatRupiah(angka) {
   return "Rp. " + Number(angka).toLocaleString("id-ID");
 }
 
-/* ================= 1. MANAJEMEN PRODUK ================= */
 let produkList = [
   { id: 1, nama: "Cookies Cokelat", varian: "500gr", harga: 125000, status: "Ready Stock", foto: "images/cookies-cokelat.jpg", deskripsi: "Cookies renyah di luar dan lembut di dalam dengan chocolate chips." },
   { id: 2, nama: "Kue Kacang Coklat", varian: "500gr", harga: 125000, status: "Ready Stock", foto: "images/kue-kacang-cokelat.jpg", deskripsi: "Kue kacang berpadu cokelat pekat dengan kacang mede utuh." },
@@ -375,7 +352,6 @@ function hapusProduk(id) {
   }
 }
 
-/* ================= 2. KELOLA PESANAN ================= */
 let pesananList = [
   { id: 1, kode: "#KC-88219", nama: "Gustave", wa: "085294589849", tgl: "10 Februari 2026, 15:40 WIB", kurir: "J&T Reguler", alamat: "Jl. Tanimbar No.14 Kel. Kasin Kec. Klojen Kota Malang", barang: "Kastangel", qty: 1, hargaSatuan: 50000, status: "Diproses", resi: "", foto: "images/kastangel-keju.jpg" },
   { id: 2, kode: "#KC-88220", nama: "Yanto", wa: "081234567890", tgl: "10 Februari 2026, 16:10 WIB", kurir: "JNE Reguler", alamat: "Jl. Soekarno Hatta No. 9, Malang", barang: "Kastangel Keju", qty: 2, hargaSatuan: 125000, status: "Diproses", resi: "", foto: "images/kastangel-keju.jpg" },
@@ -391,7 +367,6 @@ let pesananList = [
   { id: 12, kode: "#KC-88230", nama: "Yanti", wa: "085899001122", tgl: "14 Februari 2026, 09:05 WIB", kurir: "JNE Reguler", alamat: "Jl. Sigura-gura No. 11, Malang", barang: "Kue Yaya", qty: 2, hargaSatuan: 125000, status: "Diproses", resi: "", foto: "images/kue-yaya.jpg" }
 ];
 
-/* Sinkronisasi pesanan baru dari toko */
 const pesananToko = JSON.parse(localStorage.getItem("hb_orders") || "null");
 const userToko = JSON.parse(localStorage.getItem("hb_user") || "null");
 
@@ -679,7 +654,6 @@ function confirmKirimResi() {
   renderPesanan();
 }
 
-/* ================= 3. KELOLA PENGGUNA ================= */
 const penggunaList = [
   { id: 1, nama: "Yanto", email: "yanto@gmail.com", status: "Aktif" },
   { id: 2, nama: "Yanti", email: "yanti@gmail.com", status: "Aktif" },
@@ -791,7 +765,6 @@ function toggleUserStatus(id) {
   renderPengguna();
 }
 
-/* ================= 4. LAPORAN PENJUALAN ================= */
 const laporanData = [
   { nama: "Yanto", barang: "Kastengel Keju", jumlah: "2X", harga: 225000 },
   { nama: "Yanti", barang: "Kue Yaya", jumlah: "2X", harga: 225000 },
@@ -885,7 +858,6 @@ function exportLaporanCSV() {
   document.body.removeChild(tautan);
 }
 
-/* ================= UTILITAS PAGINATION & MODAL ================= */
 function renderPagination(containerId, currentPage, jenis) {
   const wadah = document.getElementById(containerId);
 
@@ -941,7 +913,6 @@ function closeModal(modalId) {
   }
 }
 
-
 function handleOverlayClick(event, modalId) {
   if (event.target && event.target.id === modalId) {
     closeModal(modalId);
@@ -964,7 +935,6 @@ if (inputResiEl !== null) {
   });
 }
 
-/* ================= INISIALISASI AWAL ================= */
 renderProduk();
 renderPesanan();
 renderPengguna();

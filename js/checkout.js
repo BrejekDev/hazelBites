@@ -1,19 +1,5 @@
-/* ==========================================================
-   Hazel Bites - checkout.js
-   Fitur halaman checkout.html:
-   - menampilkan item pesanan
-   - menghitung subtotal, diskon, ongkir, total
-   - ubah alamat pengiriman
-   - pilih kurir
-   - lanjut ke pembayaran
-
-   Materi: variabel, tipe data, object, array of object,
-   control flow, HTML DOM.
-   ========================================================== */
-
 const halamanCheckout = ambilElemen("[data-checkout-page]");
 
-/* ---------- Array of Object: item pesanan contoh ---------- */
 let itemCheckout = [
   { slug: "kue-mpit", name: "Kue Mpit", size: "350 Gram", qty: 1, price: 125000 },
   { slug: "kue-kacang-cokelat", name: "Kue Kacang Cokelat", size: "350 Gram", qty: 1, price: 125000 }
@@ -23,7 +9,6 @@ let diskonCheckout = 0;
 let ongkirCheckout = 10000;
 let kurirDipilih = "Cash On Delivery";
 
-/* ---------- Menampilkan item & rincian biaya ---------- */
 function renderCheckout() {
   let jumlahItem = 0;
 
@@ -40,7 +25,6 @@ function renderCheckout() {
     elemenJumlah.textContent = "" + jumlahItem;
   }
 
-  /* Daftar item pesanan */
   const wadahItem = ambilElemen("[data-order-items]");
   if (wadahItem !== null) {
     let htmlItem = "";
@@ -76,7 +60,6 @@ function renderCheckout() {
     wadahItem.innerHTML = htmlItem;
   }
 
-  /* Hitung biaya */
   let subtotal = 0;
   for (let k = 0; k < itemCheckout.length; k++) {
     let jumlah = itemCheckout[k].qty;
@@ -128,7 +111,6 @@ function renderCheckout() {
   }
 }
 
-/* ---------- Memasang pilihan kurir ---------- */
 function pasangPilihanKurir() {
   const kartuKurir = ambilSemuaElemen(".courier-card");
 
@@ -159,11 +141,8 @@ function pasangPilihanKurir() {
   }
 }
 
-/* ==========================================================
-   JALANKAN HANYA DI HALAMAN CHECKOUT
-   ========================================================== */
 if (halamanCheckout !== null) {
-  /* Ambil data dari halaman keranjang */
+
   const dataCheckout = JSON.parse(localStorage.getItem("hb_checkout") || "null");
 
   if (dataCheckout !== null && dataCheckout.items && dataCheckout.items.length > 0) {
@@ -189,7 +168,6 @@ if (halamanCheckout !== null) {
     }
   }
 
-  /* ---------- Alamat pengiriman ---------- */
   const tombolUbahAlamat = ambilElemen("[data-edit-address]");
   const teksAlamat = ambilElemen("[data-address-text]");
   const formAlamat = ambilElemen("[data-address-form]");
@@ -235,10 +213,8 @@ if (halamanCheckout !== null) {
     });
   }
 
-  /* ---------- Pilih kurir ---------- */
   pasangPilihanKurir();
 
-  /* ---------- Tombol lanjut pembayaran ---------- */
   const tombolBayar = ambilElemen("[data-pay-btn]");
 
   if (tombolBayar !== null) {

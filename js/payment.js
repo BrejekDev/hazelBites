@@ -1,22 +1,6 @@
-/* ==========================================================
-   Hazel Bites - payment.js
-   Fitur halaman pembayaran.html:
-   - tab metode pembayaran (Virtual Account / E-Wallet / QRIS)
-   - pilih bank & salin nomor VA
-   - pilih aplikasi e-wallet
-   - tampilkan QR & unduh QR
-   - rincian item pesanan & biaya
-   - hitung mundur batas pembayaran
-   - konfirmasi pembayaran
-
-   Materi: variabel, tipe data, object, array of object,
-   control flow, HTML DOM.
-   ========================================================== */
-
 const halamanPembayaran = ambilElemen("[data-payment-page]");
 let metodeAktif = "va";
 
-/* ---------- Mengganti tab metode pembayaran ---------- */
 function gantiMetodePembayaran(metode) {
   metodeAktif = metode;
 
@@ -41,7 +25,6 @@ function gantiMetodePembayaran(metode) {
   }
 }
 
-/* ---------- Menandai pilihan bank / e-wallet ---------- */
 function perbaruiPilihanOpsi(namaRadio) {
   const semuaRadio = ambilSemuaElemen('input[name="' + namaRadio + '"]');
 
@@ -56,7 +39,6 @@ function perbaruiPilihanOpsi(namaRadio) {
   }
 }
 
-/* ---------- Membuat gambar QRIS sederhana (SVG) ---------- */
 function buatQrisSvg() {
   let ukuran = 25;
   let kotak = "";
@@ -96,7 +78,6 @@ function buatQrisSvg() {
     '<rect width="100%" height="100%" fill="#ffffff"/>' + finder + kotak + '</svg>';
 }
 
-/* ---------- Angka dua digit untuk timer ---------- */
 function duaAngka(angka) {
   if (angka < 10) {
     return "0" + angka;
@@ -104,12 +85,8 @@ function duaAngka(angka) {
   return "" + angka;
 }
 
-/* ==========================================================
-   JALANKAN HANYA DI HALAMAN PEMBAYARAN
-   ========================================================== */
 if (halamanPembayaran !== null) {
 
-  /* ---------- 1. Tab metode pembayaran ---------- */
   const tabPembayaran = ambilSemuaElemen("[data-pay-method]");
 
   for (let i = 0; i < tabPembayaran.length; i++) {
@@ -119,7 +96,6 @@ if (halamanPembayaran !== null) {
     });
   }
 
-  /* ---------- 2. Pilihan bank Virtual Account ---------- */
   const radioBank = ambilSemuaElemen('input[name="va_bank"]');
 
   for (let j = 0; j < radioBank.length; j++) {
@@ -147,13 +123,12 @@ if (halamanPembayaran !== null) {
       document.body.appendChild(inputSementara);
       inputSementara.select();
       document.execCommand("copy");
-      document.body.removeChild(inputSementara);
+      inputSementara.remove();
 
       tampilkanToast("Nomor Virtual Account (" + nomorVA + ") disalin");
     });
   }
 
-  /* ---------- 3. Pilihan aplikasi E-Wallet ---------- */
   const radioEwallet = ambilSemuaElemen('input[name="ewallet_app"]');
 
   for (let k = 0; k < radioEwallet.length; k++) {
@@ -162,7 +137,6 @@ if (halamanPembayaran !== null) {
     });
   }
 
-  /* ---------- 4. Tampilkan QRIS ---------- */
   const kotakQris = ambilElemen("[data-qris-box]");
 
   if (kotakQris !== null) {
@@ -174,25 +148,19 @@ if (halamanPembayaran !== null) {
   if (tombolUnduhQr !== null && kotakQris !== null) {
     tombolUnduhQr.addEventListener("click", function () {
       const isiSvg = kotakQris.innerHTML;
-      const blob = new Blob([isiSvg], { type: "image/svg+xml;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
+      const dataUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(isiSvg);
 
       const tautan = document.createElement("a");
-      tautan.href = url;
-      tautan.download = "QRIS-Hazel-Bites.svg";
+      tautan.setAttribute("href", dataUrl);
+      tautan.setAttribute("download", "QRIS-Hazel-Bites.svg");
       document.body.appendChild(tautan);
       tautan.click();
-      document.body.removeChild(tautan);
-
-      setTimeout(function () {
-        URL.revokeObjectURL(url);
-      }, 1000);
+      tautan.remove();
 
       tampilkanToast("Kode QRIS berhasil diunduh");
     });
   }
 
-  /* ---------- 5. Data pesanan ---------- */
   const dataPembayaran = {
     orderId: "#ORD-0234",
     items: [
@@ -257,7 +225,6 @@ if (halamanPembayaran !== null) {
     wadahItemBayar.innerHTML = htmlItemBayar;
   }
 
-  /* ---------- 6. Rincian biaya ---------- */
   let subtotalBayar = 0;
 
   for (let n = 0; n < dataPembayaran.items.length; n++) {
@@ -362,7 +329,6 @@ if (halamanPembayaran !== null) {
     window.location.href = "pembayaran-gagal.html";
   }
 
-  /* ---------- 7. Hitung mundur ---------- */
   const elemenTimer = ambilElemen("[data-pay-timer]");
 
   if (elemenTimer !== null) {
@@ -385,7 +351,6 @@ if (halamanPembayaran !== null) {
     }, 1000);
   }
 
-  /* ---------- 8. Konfirmasi & simulasi gagal pembayaran ---------- */
   const tombolGagal = ambilElemen("[data-fail-pay]");
 
   if (tombolGagal !== null) {

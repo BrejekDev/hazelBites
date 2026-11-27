@@ -1,22 +1,8 @@
-/* ==========================================================
-   Hazel Bites - cart.js
-   Fitur halaman keranjang.html:
-   - menampilkan daftar item
-   - tambah / kurangi jumlah & hapus item
-   - voucher diskon
-   - ringkasan subtotal, diskon, total
-   - lanjut ke checkout
-
-   Materi: variabel, tipe data, object, array of object,
-   control flow, HTML DOM.
-   ========================================================== */
-
 const halamanKeranjang = ambilElemen("[data-cart-page]");
 let daftarKeranjang = null;
 let voucherAktif = null;
 let diskonKeranjang = 0;
 
-/* ---------- Object: daftar voucher ---------- */
 const DAFTAR_VOUCHER = {
   "HAZEL10": { type: "percent", value: 10, label: "Diskon 10%" },
   "HAZEL20": { type: "percent", value: 20, label: "Diskon 20%" },
@@ -24,7 +10,6 @@ const DAFTAR_VOUCHER = {
   "HEMAT25": { type: "fixed", value: 25000, label: "Potongan Rp 25.000" }
 };
 
-/* ---------- Menghitung subtotal item yang dicentang ---------- */
 function hitungSubtotalKeranjang() {
   let subtotal = 0;
 
@@ -37,7 +22,6 @@ function hitungSubtotalKeranjang() {
   return subtotal;
 }
 
-/* ---------- Memperbarui ringkasan harga ---------- */
 function perbaruiRingkasanKeranjang() {
   let subtotal = hitungSubtotalKeranjang();
   diskonKeranjang = 0;
@@ -79,7 +63,6 @@ function perbaruiRingkasanKeranjang() {
   }
 }
 
-/* ---------- Memasang aksi pada setiap item ---------- */
 function pasangAksiItemKeranjang() {
   let wadah = ambilElemen("[data-cart-list]");
   if (wadah === null) {
@@ -140,7 +123,6 @@ function pasangAksiItemKeranjang() {
   }
 }
 
-/* ---------- Menampilkan semua item keranjang ---------- */
 function renderDaftarKeranjang() {
   let wadah = ambilElemen("[data-cart-list]");
   const wadahKosong = ambilElemen("[data-cart-empty]");
@@ -215,13 +197,9 @@ function renderDaftarKeranjang() {
   perbaruiRingkasanKeranjang();
 }
 
-/* ==========================================================
-   JALANKAN HANYA DI HALAMAN KERANJANG
-   ========================================================== */
 if (halamanKeranjang !== null) {
   daftarKeranjang = ambilKeranjang();
 
-  /* Jika belum ada data keranjang, buat dari KERANJANG_AWAL */
   if (daftarKeranjang === null) {
     daftarKeranjang = [];
 
@@ -232,7 +210,6 @@ if (halamanKeranjang !== null) {
     simpanKeranjang(daftarKeranjang);
   }
 
-  /* ---------- Form voucher ---------- */
   const formVoucher = ambilElemen("[data-voucher-form]");
   const inputVoucher = document.getElementById("voucher-input");
 
@@ -261,7 +238,6 @@ if (halamanKeranjang !== null) {
     });
   }
 
-  /* ---------- Tombol checkout ---------- */
   const tombolCheckoutKeranjang = ambilElemen("[data-cart-checkout]");
 
   if (tombolCheckoutKeranjang !== null) {

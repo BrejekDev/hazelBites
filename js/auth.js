@@ -1,18 +1,6 @@
-/* ==========================================================
-   Hazel Bites - auth.js
-   Fitur halaman login.html & register.html:
-   - form login / daftar (simulasi)
-   - tombol lihat / sembunyikan password
-   - slider foto pada kartu auth
-
-   Materi: variabel, tipe data, object, control flow, array,
-   HTML DOM.
-   ========================================================== */
-
 function simpanSesiLogin(userBaru) {
   sessionStorage.setItem("hb_login", "1");
   localStorage.setItem("hb_login", "1");
-  document.cookie = "hb_login=1; path=/";
 
   if (userBaru !== null) {
     localStorage.setItem("hb_user", JSON.stringify(userBaru));
@@ -43,13 +31,11 @@ function pindahKeHalaman(namaHalaman) {
   window.location.href = urlLengkap;
 }
 
-/* ==========================================================
-   1. FORM LOGIN & REGISTER
-   ========================================================== */
 const formAuth = ambilElemen("[data-auth-form]");
 
 if (formAuth !== null) {
-  const tombolPassword = ambilSemuaElemen("[data-toggle-pass]");
+
+  const tombolPassword = ambilElemenClass("auth-toggle-pass");
 
   for (let i = 0; i < tombolPassword.length; i++) {
     tombolPassword[i].addEventListener("click", function () {
@@ -74,9 +60,18 @@ if (formAuth !== null) {
     event.preventDefault();
 
     const mode = formAuth.getAttribute("data-auth-form");
-    const inputEmail = formAuth.querySelector('input[name="email"]');
-    const inputPassword = formAuth.querySelector('input[name="password"]');
-    const inputNama = formAuth.querySelector('input[name="name"]');
+    let inputEmail = null;
+    let inputPassword = null;
+    let inputNama = null;
+
+    if (mode === "register") {
+      inputNama = ambilElemenId("reg-name");
+      inputEmail = ambilElemenId("reg-email");
+      inputPassword = ambilElemenId("reg-password");
+    } else {
+      inputEmail = ambilElemenId("login-email");
+      inputPassword = ambilElemenId("login-password");
+    }
 
     let email = "";
     let password = "";
@@ -92,12 +87,10 @@ if (formAuth !== null) {
       nama = inputNama.value.trim();
     }
 
-    /* Login admin */
     if (mode === "login" && email.toLowerCase() === "admin@gmail.com" && password === "admin") {
       localStorage.setItem("hb_admin_session", "1");
       localStorage.setItem("hb_admin_email", "admin@gmail.com");
       sessionStorage.setItem("hb_admin_session", "1");
-      document.cookie = "hb_admin_session=1; path=/";
       window.name = JSON.stringify({
         hb_admin_session: "1",
         hb_admin_email: "admin@gmail.com"
@@ -110,7 +103,6 @@ if (formAuth !== null) {
       return;
     }
 
-    /* Validasi */
     if (mode === "register" && nama === "") {
       tampilkanToast("Nama lengkap wajib diisi");
       if (inputNama !== null) {
@@ -135,7 +127,6 @@ if (formAuth !== null) {
       return;
     }
 
-    /* Simpan data user (simulasi) */
     const userBaru = {
       name: nama,
       email: email
@@ -159,9 +150,6 @@ if (formAuth !== null) {
   });
 }
 
-/* ==========================================================
-   2. LOGIN SIMULASI (tombol data-login)
-   ========================================================== */
 const tombolLogin = ambilElemen("[data-login]");
 
 if (tombolLogin !== null) {
@@ -170,9 +158,6 @@ if (tombolLogin !== null) {
   });
 }
 
-/* ==========================================================
-   3. SLIDER FOTO PADA KARTU AUTH
-   ========================================================== */
 const wadahAuth = ambilElemen(".auth-card-img");
 
 if (wadahAuth !== null) {
@@ -184,21 +169,22 @@ if (wadahAuth !== null) {
     let timerAuth = null;
 
     function tampilkanSlideAuth(indeks) {
-      for (let i = 0; i < slideAuth.length; i++) {
-        if (i === indeks) {
-          slideAuth[i].classList.add("active");
-        } else {
-          slideAuth[i].classList.remove("active");
-        }
-      }
 
-      for (let j = 0; j < titikAuth.length; j++) {
-        if (j === indeks) {
-          titikAuth[j].classList.add("active");
+      slideAuth.forEach(function (slide, i) {
+        if (i === indeks) {
+          slide.classList.add("active");
         } else {
-          titikAuth[j].classList.remove("active");
+          slide.classList.remove("active");
         }
-      }
+      });
+
+      titikAuth.forEach(function (titik, j) {
+        if (j === indeks) {
+          titik.classList.add("active");
+        } else {
+          titik.classList.remove("active");
+        }
+      });
 
       indeksAuth = indeks;
     }
@@ -218,15 +204,15 @@ if (wadahAuth !== null) {
       timerAuth = setInterval(slideAuthBerikutnya, 4000);
     }
 
-    for (let k = 0; k < titikAuth.length; k++) {
-      titikAuth[k].addEventListener("click", function () {
+    titikAuth.forEach(function (titik) {
+      titik.addEventListener("click", function () {
         const indeksTujuan = parseInt(this.getAttribute("data-index"), 10);
         if (isNaN(indeksTujuan) === false) {
           tampilkanSlideAuth(indeksTujuan);
           mulaiSliderAuth();
         }
       });
-    }
+    });
 
     wadahAuth.addEventListener("mouseenter", function () {
       if (timerAuth !== null) {

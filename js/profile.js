@@ -1,27 +1,14 @@
-/* ==========================================================
-   Hazel Bites - profile.js
-   Fitur halaman edit-profile.html:
-   - memuat data profil
-   - ganti foto profil
-   - simpan nama, email, nomor telepon
-   - logout
-
-   Materi: variabel, tipe data, object, control flow,
-   HTML DOM.
-   ========================================================== */
-
 const halamanProfil = ambilElemen("[data-profile-page]");
 
 if (halamanProfil !== null) {
-  const inputNamaProfil = document.getElementById("prof-name");
-  const inputEmailProfil = document.getElementById("prof-email");
-  const inputTeleponProfil = document.getElementById("prof-phone");
+  const inputNamaProfil = ambilElemenId("prof-name");
+  const inputEmailProfil = ambilElemenId("prof-email");
+  const inputTeleponProfil = ambilElemenId("prof-phone");
   const inputFotoProfil = ambilElemen("[data-photo-input]");
   const tombolGantiFoto = ambilElemen("[data-change-photo]");
   const gambarProfil = ambilElemen("[data-profile-img]");
   const ikonProfilKosong = halamanProfil.querySelector(".profile-placeholder-icon");
 
-  /* ---------- Muat data user ---------- */
   const userProfil = ambilDataUser();
 
   if (userProfil !== null) {
@@ -47,7 +34,6 @@ if (halamanProfil !== null) {
     }
   }
 
-  /* ---------- Ganti foto profil ---------- */
   if (tombolGantiFoto !== null && inputFotoProfil !== null) {
     tombolGantiFoto.addEventListener("click", function () {
       inputFotoProfil.click();
@@ -83,7 +69,6 @@ if (halamanProfil !== null) {
     });
   }
 
-  /* ---------- Simpan profil ---------- */
   const formProfil = ambilElemen("[data-profile-form]");
 
   if (formProfil !== null) {
@@ -123,14 +108,12 @@ if (halamanProfil !== null) {
     });
   }
 
-  /* ---------- Logout ---------- */
   const tombolLogout = ambilElemen("[data-logout]");
 
   if (tombolLogout !== null) {
     tombolLogout.addEventListener("click", function () {
       sessionStorage.removeItem("hb_login");
       localStorage.removeItem("hb_login");
-      document.cookie = "hb_login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       window.name = "";
 
       tampilkanToast("Berhasil keluar dari akun...");

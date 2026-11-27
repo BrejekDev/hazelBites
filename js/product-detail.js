@@ -1,16 +1,3 @@
-/* ==========================================================
-   Hazel Bites - product-detail.js
-   Fitur halaman produk.html & produk-guest.html:
-   - mengisi data produk dari js/products.js
-   - pilih ukuran
-   - atur jumlah
-   - tambah ke keranjang / beli sekarang
-   - rekomendasi produk lain
-
-   Materi: variabel, tipe data, object, array of object,
-   control flow, HTML DOM.
-   ========================================================== */
-
 const halamanDetail = ambilElemen("[data-detail]");
 
 if (halamanDetail !== null && typeof daftarProduk !== "undefined") {
@@ -19,7 +6,6 @@ if (halamanDetail !== null && typeof daftarProduk !== "undefined") {
   const slugDetail = ambilParameterURL("p");
   let produkDetail = null;
 
-  /* ---------- Cari produk sesuai URL ---------- */
   for (let i = 0; i < daftarProduk.length; i++) {
     if (daftarProduk[i].slug === slugDetail) {
       produkDetail = daftarProduk[i];
@@ -33,7 +19,6 @@ if (halamanDetail !== null && typeof daftarProduk !== "undefined") {
   let hargaAktif = produkDetail.price;
   let jumlahBeli = 1;
 
-  /* ---------- Isi data produk ---------- */
   document.title = produkDetail.name + " - Hazel Bites";
 
   const elemenNama = ambilElemen("[data-d-name]");
@@ -80,7 +65,6 @@ if (halamanDetail !== null && typeof daftarProduk !== "undefined") {
     gambarKecil[j].alt = "";
   }
 
-  /* ---------- Pilih gambar dari thumbnail ---------- */
   const tombolThumb = ambilSemuaElemen(".thumb");
   for (let k = 0; k < tombolThumb.length; k++) {
     tombolThumb[k].addEventListener("click", function () {
@@ -96,7 +80,6 @@ if (halamanDetail !== null && typeof daftarProduk !== "undefined") {
     });
   }
 
-  /* ---------- Pilih ukuran ---------- */
   const tombolUkuran = ambilSemuaElemen(".size");
 
   for (let m = 0; m < tombolUkuran.length; m++) {
@@ -125,7 +108,6 @@ if (halamanDetail !== null && typeof daftarProduk !== "undefined") {
     });
   }
 
-  /* ---------- Atur jumlah ---------- */
   const elemenQty = ambilElemen("[data-qty]");
 
   function aturJumlah(nilai) {
@@ -158,7 +140,6 @@ if (halamanDetail !== null && typeof daftarProduk !== "undefined") {
     });
   }
 
-  /* ---------- Tambah ke keranjang ---------- */
   function mintaLogin() {
     tampilkanToast("Silakan login terlebih dahulu");
     setTimeout(function () {
@@ -255,7 +236,6 @@ if (halamanDetail !== null && typeof daftarProduk !== "undefined") {
     });
   }
 
-  /* ---------- Rekomendasi produk lain ---------- */
   const wadahRekomendasi = ambilElemen("[data-reco]");
 
   if (wadahRekomendasi !== null) {

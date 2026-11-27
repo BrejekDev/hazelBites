@@ -1,21 +1,8 @@
-/* ==========================================================
-   Hazel Bites - order-history.js
-   Fitur halaman riwayat.html:
-   - daftar pesanan
-   - filter tab status
-   - pencarian pesanan
-   - batalkan, tandai selesai, beli lagi
-
-   Materi: variabel, tipe data, object, array of object,
-   control flow, HTML DOM.
-   ========================================================== */
-
 const halamanRiwayat = ambilElemen("[data-history-page]");
 let daftarPesanan = [];
 let statusRiwayatAktif = "semua";
 let kataCariRiwayat = "";
 
-/* ---------- Array of Object: pesanan contoh ---------- */
 const PESANAN_AWAL = [
   {
     id: "ord-p1",
@@ -124,7 +111,6 @@ const PESANAN_AWAL = [
   }
 ];
 
-/* ---------- Nama status untuk ditampilkan ---------- */
 function labelStatusPesanan(status) {
   if (status === "diproses") {
     return "Diproses";
@@ -141,7 +127,6 @@ function labelStatusPesanan(status) {
   return "Diproses";
 }
 
-/* ---------- Mencari object pesanan berdasarkan id ---------- */
 function cariPesanan(id) {
   for (let i = 0; i < daftarPesanan.length; i++) {
     if (daftarPesanan[i].id === id) {
@@ -151,12 +136,10 @@ function cariPesanan(id) {
   return null;
 }
 
-/* ---------- Menyimpan daftar pesanan ---------- */
 function simpanDaftarPesanan() {
   localStorage.setItem("hb_orders", JSON.stringify(daftarPesanan));
 }
 
-/* ---------- Memasang aksi tombol pada kartu pesanan ---------- */
 function pasangAksiRiwayat() {
   let wadah = ambilElemen("[data-history-list]");
   if (wadah === null) {
@@ -231,7 +214,6 @@ function pasangAksiRiwayat() {
           qty = 1;
         }
 
-        /* Cek apakah produk & ukuran sudah ada di keranjang */
         let itemLama = null;
         for (let n = 0; n < keranjang.length; n++) {
           if (keranjang[n].slug === item.slug && keranjang[n].size === ukuran) {
@@ -265,7 +247,6 @@ function pasangAksiRiwayat() {
   }
 }
 
-/* ---------- Menampilkan daftar pesanan ---------- */
 function renderRiwayat() {
   const hasilFilter = [];
   const kunci = kataCariRiwayat.trim().toLowerCase();
@@ -297,7 +278,6 @@ function renderRiwayat() {
     }
   }
 
-  /* Pada tab "Semua" tampilkan ringkasan seperti desain */
   let pesananTampil = hasilFilter;
 
   if (statusRiwayatAktif === "semua" && kunci === "" && hasilFilter.length >= 12) {
@@ -425,11 +405,8 @@ function renderRiwayat() {
   pasangAksiRiwayat();
 }
 
-/* ==========================================================
-   JALANKAN HANYA DI HALAMAN RIWAYAT
-   ========================================================== */
 if (halamanRiwayat !== null) {
-  /* ---------- Ambil pesanan dari localStorage ---------- */
+
   const pesananTersimpan = JSON.parse(localStorage.getItem("hb_orders") || "null");
 
   if (pesananTersimpan !== null && pesananTersimpan.length > 0) {
@@ -444,7 +421,6 @@ if (halamanRiwayat !== null) {
     localStorage.setItem("hb_orders", JSON.stringify(daftarPesanan));
   }
 
-  /* ---------- Tab filter status ---------- */
   const tabRiwayat = ambilSemuaElemen("[data-history-tab]");
 
   for (let j = 0; j < tabRiwayat.length; j++) {
@@ -468,7 +444,6 @@ if (halamanRiwayat !== null) {
     });
   }
 
-  /* ---------- Pencarian pesanan ---------- */
   const inputCariRiwayat = ambilElemen("[data-history-search]");
 
   if (inputCariRiwayat !== null) {
